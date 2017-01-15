@@ -1,0 +1,110 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Vulnerability Database Project{% endblock %}
+
+<script src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+<script>
+
+$(function() {
+    
+    $('#loginmodal').modal({
+        keyboard: true
+    })
+
+    $('#registermodal').modal({
+        keyboard: true
+         
+    })
+      
+});
+</script>
+{% block navbar %}
+<!-- /.modal -->
+
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+          <div class="navbar-header col-md-4 " >
+			<button type="button" class="navbar-toggle"
+	  		data-toggle="collapse" data-target="./navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" herf="/">LA漏洞库</a>
+		</div>
+		<div class="navbar-collapse collapse col-md-5">
+			 <ul class="nav navbar-nav">
+				<li><a href="/vulinfo">首页</a></li>
+				<li><a href="/vulinfo">漏洞信息</a></li>
+				<li><a href="/vulinfo">技术文章</a></li>
+				<li><a href="/vulinfo">交流论坛</a></li>
+			</ul>
+			
+		</div>
+        <div class="navbar-collapse collapse col-md-3 navbar-right">				
+			<ul class="nav navbar-nav navbar-right"> 
+				{% if current_user.is_authenticated %}
+                    <li><a>欢迎您，{% print(current_user.user_name) %}</a></li>
+				<li><a href="{{ url_for('main.user_logout') }}">  退出</a></li> 
+				{% else %}
+                	<li><a data-toggle="modal"  href="#registermodal"><span class="glyphicon glyphicon-user"></span>注册</a></li> 
+                	<li><a data-toggle="modal"  href="#loginmodal""><span class="glyphicon glyphicon-log-in"></span>登录</a></li> 
+				{% endif %}
+            	</ul> 
+
+			<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginmodalLabel" >
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+							</button>
+							<h4 class="modal-title" id="loginmodalLabel">用户登录</h4>
+						</div>
+						<div class="modal-body">							
+							{{ wtf.quick_form(loginform) }}							
+						</div>
+						<div class="modal-footer">
+						<!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">注册</button>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade " id="registermodal"  tabindex="-1" role="dialog" aria-labelledby="registermodalLabel" >
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+							</button>
+							<h4 class="modal-title" id="registermodalLabel">用户注册</h4>
+						</div>
+						<div class="modal-body">							
+							{{ wtf.quick_form(registerform) }}							
+						</div>
+						<div class="modal-footer">
+						<!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">注册</button>-->
+						</div>
+					</div>
+				</div>
+			</div>
+	
+		
+    	  </div> 
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="container">
+	{% for message in get_flashed_messages() %}
+	<div class ="alert alert-warning">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{ message }}
+	</div>
+	{% endfor %}
+	{% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+

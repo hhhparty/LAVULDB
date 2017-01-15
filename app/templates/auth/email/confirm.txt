@@ -1,0 +1,8 @@
+{{user.user_name}} 您好!
+欢迎您加入LA漏洞社区！
+为确认您的邮件账户，请点击下列链接：
+{{url_for('auth.confirm',token=token,_external=True)}}
+
+感谢您的参与，祝您好运
+
+LA漏洞项目组

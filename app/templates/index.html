@@ -1,0 +1,95 @@
+{% include 'head.html' %}
+{% if token %}
+    {{ registerform.reset() }}
+{% endif %}
+{% if loginform.login_submit.data and loginform.is_submitted() and not loginform.validate() %}
+<script>
+$(function() {
+ 
+    $('#loginmodal').modal({
+        show:true        
+    })
+      
+});
+{% endif %}
+{% if registerform.register_submit.data and registerform.is_submitted() and not registerform.validate() %}
+<script>
+$(function() {
+ 
+    $('#registermodal').modal({
+        show:true        
+    })
+      
+});
+{% endif %}
+
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='seebug.css') }}">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4 col-sm-4 col-md-4">
+			<section>
+				<h2>漏洞精选 <a class="more" href="/main/topics">More</a> </h2>
+				<ul>
+					{% for topic in topics %}
+					<li>
+						<a href={{topic.herf}} class="title" target="_blank">{{topic.title}}</a>
+						<div class="des">
+							{{topic.des}}
+						</div>
+					</li>				
+					{% endfor %}
+				</ul>
+			</section>
+		</div>
+		<div class="col-xs-5 col-sm-5 col-md-5">
+			<section>
+				<h2>漏洞播报<a class="more" href="/vuldb/news">More</a></h2>
+				<ul>
+					{% for new in news %}
+					<li class="item">
+						<a href={{new.herf}} class="title">
+							<span class="tag">{{new.title}}</span>
+							{{new.des}}
+						</a>
+					</li>
+					{% endfor %}
+								
+				</ul>
+			</section>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			<section class="index-section">
+				<!--sebug 统计 begin-->
+				<div class="sebug-statistic " style="padding-top: 20px;">
+					<div class="clearfix">
+						<dl>
+							<dt><i class="sebug-icon icon-bug"></i><br>漏洞数</dt>
+							<dd><b>{{ vuls_counter }}</b> </dd>
+						</dl>
+						<dl>
+							<dt><i class="fa fa-rocket"></i><br>PoC 数</dt>
+							<dd><b>{{ pocs_counter }}</b> </dd>
+						</dl>
+						<dl>
+							<dt><i class="sebug-icon icon-rmb"></i><br>发放现金</dt>
+							<dd><b>{{ paidcash_sum }}</b></dd>
+						</dl>
+						<dl>
+							<dt><i class="fa fa-database"></i><br>悬赏金额</dt>
+							<dd><b>{{ someother_sum }}</b> </dd>
+						</dl>
+					</div>
+				</div>
+				<!--sebug 统计 end-->
+
+				<section class="quick-link">
+					<a class="item" href="/contribute/reward/task/1">工控专题悬赏</a>
+					<a class="item" href="/vuldb/reward/poc">参与 PoC 悬赏</a>
+					<a class="item" href="/vuldb/reward/detail">参与详情悬赏</a>
+				</section>
+
+			</section>
+		</div>
+	</div>
+</div>
