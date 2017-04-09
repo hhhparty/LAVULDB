@@ -1,0 +1,29 @@
+{% include 'head.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<div class="page-header text-center">
+    <h1>参考信息（Vulnref）</h1>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<section>
+			
+				<ul>
+					{{ wtf.quick_form(form) }}
+								
+				</ul>
+			</section>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3">
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

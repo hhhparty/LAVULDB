@@ -25,6 +25,7 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'#TODO
+login_manager.login_message = "请您先登陆网站！"
 
 #程序生成器
 def create_app(config_name):

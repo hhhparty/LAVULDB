@@ -7,31 +7,102 @@ Created on Wed Jan  4 16:48:11 2017
 
 from  flask import render_template,redirect,request,url_for,flash
 from . import auth
-from flask_login import login_required,current_user
+from flask_login import login_required,current_user,login_user,logout_user
 from ..models import User
 from ..email import send_email
 from .forms import PasswordResetRequestForm,ChangePasswordForm,PasswordResetForm,ChangeEmailForm
 from ..models import db
+from .forms import LoginForm,RegisterForm
 
 '''
 这里集中了一些用户账户管理的视图
 '''
+@auth.route('/register',methods=['GET','POST'])
+def register():
+    '''
+    用户注册处理
+    '''
+    registerform = RegisterForm()
+    #flask_wtfform提交只是发出post方法，所以必须验证该提交是否有数据
+    if registerform.register_submit.data and registerform.validate_on_submit():        
+        user = User(user_name = registerform.user_name.data,
+                    user_email = registerform.user_email.data,
+                    password = registerform.user_pwd.data,
+                    user_dept = registerform.user_dept.data)
+        db.session.add(user)            
+        db.session.commit()
+        
+        token = user.generate_userconfirmation_token()
+        send_email(user.user_email,'确认您的邮箱帐户','auth/email/confirm',
+                   user=user,token=token)
+        
+        flash('一封确认邮件已经发送到您的邮箱，请在1小时内点击邮件内链接以确认您的帐户')
+        
+        #flash('注册成功，请您登录！')
+               
+        return redirect(url_for('auth.login'))
+    return render_template('auth/register.html',registerform=registerform)
+
+"""
+处理登陆
+使用flask_login的login_user维护用户登陆会话
+"""
+@auth.route('/login',methods=['GET','POST'])
+def login():
+    '''
+    用户登录处理
+    '''
+    loginform = LoginForm()
+    
+    if loginform.login_submit.data and loginform.validate_on_submit():
+        user = User.query.filter_by(user_email=loginform.user_email.data).first()
+        if user is not None and user.verify_password(loginform.user_pwd.data):
+            login_user(user,loginform.remenber_me.data)
+            return redirect(request.args.get('next') or url_for('main.index'))
+           
+        flash('用户名或密码输入错误！')  
+    return render_template('auth/login.html',loginform=loginform)
+'''
+在用户向本站发送请求时，先检查是否登录，如果登录则更改其近期登录时间（ping）
+之后检测当前用户是否未认证邮箱，且是否请求非’auth.‘为首的路由，如果是则转向未认证页面。
+'''  
+@auth.before_app_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.ping()
+        if not current_user.user_confirmed and request.endpoint[:5] != 'auth.':
+            return redirect(url_for('auth.unconfirmed'))
+ 
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
+     
+
 @auth.route('/confirm/<token>')
 @login_required
-def confirm(token):
-    if current_user.confirmed:
+def confirm(token): 
+    
+    if current_user.user_confirmed:
         return redirect(url_for('main.index'))
     if current_user.confirm(token):
         flash('您已经确认了邮件账户。感谢！')
     else:
         flash('邮件账户确认消息过期或无效！')
     return redirect(url_for('main.index'))
-        
+    
+@auth.route('/unconfirmed')
+def unconfirmed():
+    if current_user.is_anonymous or current_user.user_confirmed:
+        return redirect(url_for('main.index'))
+    return render_template('auth/unconfirmed.html')
+       
 
 @auth.route('/confirm')
 @login_required
 def resend_confirmation():
-    token = current_user.generate_confirmation_token()
+    token = current_user.generate_userconfirmation_token()
     send_email(current_user.user_email,'确认您的邮箱帐户','auth/email/confirm',
                    user=current_user,token=token)
     flash('一封确认邮件已经发送到您的邮箱，请在1小时内点击邮件内链接以确认您的帐户')
@@ -41,6 +112,7 @@ def resend_confirmation():
 @auth.route('/change-password', methods=['GET', 'POST'])
 @login_required
 def change_password():
+    
     form = ChangePasswordForm()
     if form.validate_on_submit():
         if current_user.verify_password(form.old_password.data):

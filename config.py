@@ -10,16 +10,30 @@ It configs base dir ,database path ,wtf secret key,etc.
 """
 
 import os
+import logging
+import time
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+#Define the logger
+logger = logging.getLogger("LAVULNDB_PORJECT")
+logger.setLevel(logging.DEBUG)
+logger_fh = logging.FileHandler(time.strftime("%Y%m%d",time.localtime())+".log")
+logger_fh.setLevel(logging.DEBUG)
+logger_ch = logging.StreamHandler()
+logger_ch.setLevel(logging.ERROR)
+formatter = logging.Formatter("%(asctime)s-%(name)s-%(levelname)s-%(message)s")
+logger_fh.setFormatter(formatter)
+logger_ch.setFormatter(formatter)
+logger.addHandler(logger_fh)
+logger.addHandler(logger_ch)
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'wds.doie.edu.cn' 
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True #数据更新即提交
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_ON_TEARDOWN=True #数据更新即提交  
+    SQLALCHEMY_TRACK_MODIFICATIONS = True #2.0中替代了SQLALCHEMY_ON_TEARDOWN
     LAVULDB_MAIL_SUBJECT_PREFIX = '[LAVULDB]'
     LAVULDB_MAIL_SENDER = 'LAVULDB Admin <admin@exampl.com>'
-    LAVULDB_ADMIN = os.environ.get('LAVULDB_ADMIN')
+    LAVULDB_ADMIN = os.environ.get('LAVULDB_ADMIN') or 'hhhparty@163.com'
     
     MAIL_SERVER = 'smtp.g.com'#TODO 未定邮件服务器
     MAIL_PORT = 587 #TODO 未定邮件服务器
@@ -30,6 +44,7 @@ class Config:
     MAIL_PORT = 587
     LAVULDB_MAIL_SUBJECT_PREFIX = '[LAVULDB]'
     LAVULDB_MAIL_SENDER = 'LAVULDB Admin <LAVULDB@example.com>'
+    LAVULDB_SLOW_DB_QUERY_TIME=2
     
     
     @staticmethod

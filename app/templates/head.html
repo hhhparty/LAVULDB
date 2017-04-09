@@ -1,96 +1,76 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %}Vulnerability Database Project{% endblock %}
+{% block title %}LA漏洞库{% endblock %}
 
-<script src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
-<script>
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
 
-$(function() {
-    
-    $('#loginmodal').modal({
-        keyboard: true
-    })
-
-    $('#registermodal').modal({
-        keyboard: true
-         
-    })
-      
-});
-</script>
 {% block navbar %}
 <!-- /.modal -->
 
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
           <div class="navbar-header col-md-4 " >
-			<button type="button" class="navbar-toggle"
-	  		data-toggle="collapse" data-target="./navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" herf="/">LA漏洞库</a>
+			<ul class="nav navbar-nav">
+               <li><img src="{{url_for('static',filename='logo.jpg')}}"></li>
+			<li><a class="navbar-brand" herf="/">  LA漏洞库</a></li>
+               </ul>
 		</div>
 		<div class="navbar-collapse collapse col-md-5">
 			 <ul class="nav navbar-nav">
-				<li><a href="/vulinfo">首页</a></li>
-				<li><a href="/vulinfo">漏洞信息</a></li>
-				<li><a href="/vulinfo">技术文章</a></li>
+				<li><a href="{{url_for('main.index')}}">首页</a></li>
+				<li class="dropdown">
+                		<a href="{{url_for('main.vulninfo')}}"
+                             class="dropdown-toggle" data-toggle="dropdown" >
+                			漏洞信息 <span class="caret"></span>
+                		</a>
+                		<ul class="dropdown-menu">
+                              <li><a href="{{url_for('main.vulninfo')}}" >
+                			漏洞信息浏览 </a></li>
+                			<li><a href="{{url_for('main.vulninfoinsert')}}">漏洞信息录入</a></li>      
+                              {% if current_user.is_administrator()  %}  
+                                <li><a href="{{ url_for('main.vulndbmgmt') }}">漏洞库管理</a></li> 
+                              {% endif %}                                    			             			
+                			<li class="divider"></li>
+                			<li><a href="#">爬虫测试</a></li>   
+                		</ul>
+                    </li>
+				<li><a href="{{url_for('main.post')}}">技术文章</a></li>
 				<li><a href="/vulinfo">交流论坛</a></li>
+                    <!--leo Test start-->
+                    <li class="dropdown">
+                		<a href="{{url_for('main.index')}}"
+                             class="dropdown-toggle" data-toggle="dropdown" href="#">
+                			TEST <span class="caret"></span>
+                		</a>
+                		<ul class="dropdown-menu">
+                			<li><a href="{{url_for('main.cncpe')}}">Cncpe</a></li>  
+                              <li><a href="{{url_for('main.vulnref')}}">Vulnref</a></li> 
+                              <li><a href="{{url_for('main.vulntype')}}">Vulntype</a></li>  
+                              <li><a href="{{url_for('main.vulnseverity')}}">Vulnseverity</a></li> 
+                              <li><a href="{{url_for('main.vulninfo')}}">Vulninformation</a></li>               			
+                			<li class="divider"></li>
+                			<li><a href="#">爬虫测试</a></li>   
+                		</ul>
+                    </li>
+                    <!--Test end-->            
 			</ul>
 			
 		</div>
         <div class="navbar-collapse collapse col-md-3 navbar-right">				
 			<ul class="nav navbar-nav navbar-right"> 
 				{% if current_user.is_authenticated %}
-                    <li><a>欢迎您，{% print(current_user.user_name) %}</a></li>
-				<li><a href="{{ url_for('main.user_logout') }}">  退出</a></li> 
+                    <li><a href="{{ url_for('main.user',username=current_user.user_name) }}">欢迎您，{{ current_user.user_name }}</a></li> 
+				<li><a href="{{ url_for('auth.logout') }}">  退出</a></li> 
 				{% else %}
-                	<li><a data-toggle="modal"  href="#registermodal"><span class="glyphicon glyphicon-user"></span>注册</a></li> 
-                	<li><a data-toggle="modal"  href="#loginmodal""><span class="glyphicon glyphicon-log-in"></span>登录</a></li> 
+                	<li><a  href="{{ url_for('auth.register')}}"><span class="glyphicon glyphicon-user"></span>注册</a></li> 
+                	<li><a   href="{{url_for('auth.login')}}"><span class="glyphicon glyphicon-log-in"></span>登录</a></li> 
 				{% endif %}
-            	</ul> 
-
-			<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginmodalLabel" >
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-							</button>
-							<h4 class="modal-title" id="loginmodalLabel">用户登录</h4>
-						</div>
-						<div class="modal-body">							
-							{{ wtf.quick_form(loginform) }}							
-						</div>
-						<div class="modal-footer">
-						<!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">注册</button>-->
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal fade " id="registermodal"  tabindex="-1" role="dialog" aria-labelledby="registermodalLabel" >
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-							</button>
-							<h4 class="modal-title" id="registermodalLabel">用户注册</h4>
-						</div>
-						<div class="modal-body">							
-							{{ wtf.quick_form(registerform) }}							
-						</div>
-						<div class="modal-footer">
-						<!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">注册</button>-->
-						</div>
-					</div>
-				</div>
-			</div>
-	
-		
+            	</ul> 		
     	  </div> 
     </div>
 </div>
@@ -106,5 +86,6 @@ $(function() {
 	{% block page_content %}{% endblock %}
 </div>
 {% endblock %}
+{{ super() }}
 
 

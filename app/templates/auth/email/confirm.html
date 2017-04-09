@@ -1,8 +1,8 @@
 <p>{{user.user_name}} 您好!</p>
 <p>欢迎您加入 <b>LA漏洞社区</b>!</p>
-<p>为确认您的邮件账户，请点击下列链接：<a href="{{url_for('auth.confirm',token=token,_external=True)}}">点击这里</a>。</p>
-<p>或者，您可以将下面的链接粘帖在您浏览器中的地址栏中:</p>
-<p>{{url_for('auth.confirm',token=token,_external=True)}}</p>
+<p>为确认您的邮件账户，请点击下列链接：<a href=" {{url_for('auth.confirm',token=token,_external=True)}} " >点击这里</a>。</p>
+<p> 或者，您可以将下面的链接粘帖在您浏览器中的地址栏中: </p>
+<p> {{url_for('auth.confirm',token=token,_external=True)}} </p>
 <p>感谢您的参与，祝您好运</p>
 <p>LA漏洞项目组</p>
 

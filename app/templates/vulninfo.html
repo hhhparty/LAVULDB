@@ -1,0 +1,37 @@
+{% include 'head.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{{ moment.include_moment() }}
+{% block page_content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flasky.css') }}">
+
+<div>
+    {% if form is not None and current_user.can(Permission.VULNINFO_EDIT) %}
+    {{ wtf.quick_form(form) }}
+    {% endif %}
+</div>
+<div class="post-tabs">
+    
+    <ul class="posts">
+    {% for vulninfo in vulninfoes %}
+    <li class="post">
+        
+        <div class="post-content">
+            <div>{{vulninfo.name}}</div>
+            <div>{{vulninfo.vuln_id}}</div>
+            <div>{{vulninfo.published}}</div>
+            <div>{{vulninfo.modified}}</div>
+            <div>{{vulninfo.severity}}</div>
+            <div>{{vulninfo.vuln_type_id}}</div>
+            <div>{{vulninfo.vuln_type_alias_id}}</div>
+            <div>{{vulninfo.cnnvd_id}}</div>    
+            
+            <div class="post-author"><a href="{{ url_for('.user', username=vulninfo.editor.user_name) }}">{{ vulninfo.editor.user_name }}</a></div>
+           
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endblock %}

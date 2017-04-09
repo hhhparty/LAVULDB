@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cnnvd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://www.cnnvd.org.cn/vuln/1.0"
+xsi:schemaLocation="http://www.cnnvd.org.cn/vuln/1.0 http://www.cnnvd.org.cn/schema/vulnerability.xsd"
+cnnvd_xml_version="1.0"
+pub_date="2014-07-01">
+<entry>
+<name>Redis 整数溢出漏洞</name>
+<vuln-id>CNNVD-201511-360</vuln-id>
+<published>2016-04-14</published>
+<modified>2016-04-14</modified>
+<source>Luca Bruno</source>
+<severity>中危</severity>
+<vuln-type>数字错误</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:pivotal_software:redis:2.8.23"/>
+<cncpe-lang name="cpe:/o:debian:debian_linux:8.0"/>
+<cncpe-lang name="cpe:/a:pivotal_software:redis:3.0.2"/>
+<cncpe-lang name="cpe:/a:pivotal_software:redis:3.0.3"/>
+<cncpe-lang name="cpe:/a:pivotal_software:redis:3.0.4"/>
+<cncpe-lang name="cpe:/a:pivotal_software:redis:3.0.5"/>
+<cncpe-lang name="cpe:/a:pivotal_software:redis:3.0.1"/>
+<cncpe-lang name="cpe:/a:pivotal_software:redis:3.0.0"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:pivotal_software:redis:2.8.23</product>
+<product>cpe:/o:debian:debian_linux:8.0</product>
+<product>cpe:/a:pivotal_software:redis:3.0.2</product>
+<product>cpe:/a:pivotal_software:redis:3.0.3</product>
+<product>cpe:/a:pivotal_software:redis:3.0.4</product>
+<product>cpe:/a:pivotal_software:redis:3.0.5</product>
+<product>cpe:/a:pivotal_software:redis:3.0.1</product>
+<product>cpe:/a:pivotal_software:redis:3.0.0</product>
+</vuln-software-list>
+<vuln-descript>Redis是美国Redis Labs公司赞助的一套开源的使用ANSI C编写、支持网络、可基于内存亦可持久化的日志型、键值（Key-Value）存储数据库，并提供多种语言的API。
+Redis 2.8.24之前2.8.x版本和3.0.6之前3.0.x版本的lua_struct.c文件中的‘getnum’函数存在整数溢出漏洞。远程攻击者可借助较大的数字利用该漏洞造成拒绝服务（内存损坏和应用程序崩溃）。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-8080</cve-id>
+<bugtraq-id>77507</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>BID</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www.securityfocus.com/bid/77507</ref-url>
+</ref>
+<ref>
+<ref-source>MLIST</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www.openwall.com/lists/oss-security/2015/11/06/2</ref-url>
+</ref>
+<ref>
+<ref-source>DEBIAN</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www.debian.org/security/2015/dsa-3412</ref-url>
+</ref>
+<ref>
+<ref-source>raw.githubusercontent.com</ref-source>
+<ref-name></ref-name>
+<ref-url>https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES</ref-url>
+</ref>
+<ref>
+<ref-source>raw.githubusercontent.com</ref-source>
+<ref-name></ref-name>
+<ref-url>https://raw.githubusercontent.com/antirez/redis/3.0/00-RELEASENOTES</ref-url>
+</ref>
+<ref>
+<ref-source>github.com</ref-source>
+<ref-name></ref-name>
+<ref-url>https://github.com/antirez/redis/issues/2855</ref-url>
+</ref>
+<ref>
+<ref-source>MLIST</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www.openwall.com/lists/oss-security/2015/11/06/4</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，详情请关注厂商主页：
+http://redis.io/</vuln-solution>
+</entry>
+<entry>
+<name>IBM InfoSphere BigInsights 不可信搜索路径漏洞</name>
+<vuln-id>CNNVD-201512-706</vuln-id>
+<published>2016-01-04</published>
+<modified>2016-01-04</modified>
+<source></source>
+<severity>中危</severity>
+<vuln-type>未知</vuln-type>
+<thrtype>本地</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:infosphere_biginsights:3.0.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:infosphere_biginsights:3.0.0.1"/>
+<cncpe-lang name="cpe:/a:ibm:infosphere_biginsights:4.0.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:infosphere_biginsights:3.0.0.2"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:infosphere_biginsights:3.0.0.0</product>
+<product>cpe:/a:ibm:infosphere_biginsights:3.0.0.1</product>
+<product>cpe:/a:ibm:infosphere_biginsights:4.0.0.0</product>
+<product>cpe:/a:ibm:infosphere_biginsights:3.0.0.2</product>
+</vuln-software-list>
+<vuln-descript>IBM InfoSphere BigInsights是美国IBM公司的一套用于储存和分析 “大数据” 的软件平台。该平台为管理和分析海量的结构化和非结构化数据提供了解决方案。
+IBM InfoSphere BigInsights中存在不可信搜索路径漏洞。当使用DB2数据时，本地攻击者可借助木马库利用该漏洞获取权限。以下版本受到影响：IBM InfoSphere BigInsights 3.0、3.0.0.1、3.0.0.2、4.0。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-1947</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21967131</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21967131</vuln-solution>
+</entry>
+<entry>
+<name>IBM WebSphere Process Server和Business Process Manager Advanced 安全漏洞</name>
+<vuln-id>CNNVD-201512-707</vuln-id>
+<published>2016-01-04</published>
+<modified>2016-01-04</modified>
+<source></source>
+<severity>中危</severity>
+<vuln-type>未知</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.1"/>
+<cncpe-lang name="cpe:/a:ibm:websphere_process_server:7.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.0::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.0::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.0::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.1::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.1::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.0.1::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.0::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.5.0::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.6.2"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.6.1"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.6.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.5.0::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.5.0::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.5.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.1::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.1::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.1::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.1"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.0::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.0::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.0::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.5.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.3::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.3::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.3::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.2::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.2::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.2::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.2"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.1::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.1::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.1::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.1"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.0::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.0::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.0::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.1.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.0.0::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.0.0::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.0.0::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:8.0.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.2::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.2::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.2::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.2"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.1::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.1::~~express~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.1::~~advanced~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.1"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.0::~~standard~~~"/>
+<cncpe-lang name="cpe:/a:ibm:business_process_manager:7.5.1.0::~~express~~~"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.1</product>
+<product>cpe:/a:ibm:websphere_process_server:7.0</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.0::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.0::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.0::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.1::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.1::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.0.1::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.0</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.0::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.5.0::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.6.2</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.6.1</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.6.0</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.5.0::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.5.0::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.5.0</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.1::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.1::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.1::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.1</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.0::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.0::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.0::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.5.0.0</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.3::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.3::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.3::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.2::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.2::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.2::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.2</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.1::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.1::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.1::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.1</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.0::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.0::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.0::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.1.0</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.0.0::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.0.0::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.0.0::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:8.0.0.0</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.2::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.2::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.2::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.2</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.1::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.1::~~express~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.1::~~advanced~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.1</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.0::~~standard~~~</product>
+<product>cpe:/a:ibm:business_process_manager:7.5.1.0::~~express~~~</product>
+</vuln-software-list>
+<vuln-descript>IBM WebSphere Process Server和Business Process Manager（BPM）Advanced都是美国IBM公司的产品。IBM WebSphere Process Server是一套业务流程自动化引擎；BPM是一套综合的业务流程管理平台，BPM Advanced是一个高级版。
+IBM WebSphere Process Server和BPM Advanced中的Remote Artifact Loader (RAL)存在安全漏洞，该漏洞源于程序没有正确使用HTTPS连接的SSL。远程攻击者可利用该漏洞获取敏感信息或修改数据。以下版本受到影响：IBM WebSphere Process Server 7版本，Business Process Manager Advanced 7.5至7.5.1.2版本，8.0至8.0.1.3版本，8.5.0至8.5.0.2版本，8.5.5至8.5.5.0版本，8.5.6至8.5.6.2版本。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-7441</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>https://www-01.ibm.com/support/docview.wss?uid=swg21971968</ref-url>
+</ref>
+<ref>
+<ref-source>AIXAPAR</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg1JR54760</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+https://www-01.ibm.com/support/docview.wss?uid=swg21971968</vuln-solution>
+</entry>
+<entry>
+<name>IBM SPSS Statistics 安全漏洞</name>
+<vuln-id>CNNVD-201512-708</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-05</modified>
+<source></source>
+<severity>高危</severity>
+<vuln-type>权限许可和访问控制</vuln-type>
+<thrtype>本地</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:spss_statistics:22.0.0.2"/>
+<cncpe-lang name="cpe:/a:ibm:spss_statistics:23.0.0.2"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:spss_statistics:22.0.0.2</product>
+<product>cpe:/a:ibm:spss_statistics:23.0.0.2</product>
+</vuln-software-list>
+<vuln-descript>IBM SPSS Statistics是美国IBM公司的一套统计分析软件，它能够帮助企业解决从计划和数据收集到分析、报告和部署的整个分析过程中的问题。
+IBM SPSS Statistics 22.0.0.2版本和23.0.0.2版本中存在安全漏洞，该漏洞源于程序为Python脚本分配弱权限（全局可写）。本地攻击者可通过修改脚本利用该漏洞获取权限。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-7489</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21973502</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21973502</vuln-solution>
+</entry>
+<entry>
+<name>IBM UrbanCode Deploy 跨站脚本漏洞</name>
+<vuln-id>CNNVD-201601-001</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-05</modified>
+<source></source>
+<severity>低危</severity>
+<vuln-type>跨站脚本</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.2.0.1"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.2.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.3.1"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.3"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.8"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.11"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.10"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.2"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.7"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.6"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.5"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.4"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.3"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.2"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.1"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.1.1.0"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.9"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.8"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.7"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.6"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.5"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.4"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.3"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.2"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.1"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0.1.0"/>
+<cncpe-lang name="cpe:/a:ibm:urbancode_deploy:6.0"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:urbancode_deploy:6.2.0.1</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.2.0.0</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.3.1</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.3</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.8</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.11</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.10</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.2</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.7</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.6</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.5</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.4</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.3</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.2</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.1</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.1.1.0</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.9</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.8</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.7</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.6</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.5</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.4</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.3</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.2</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.1</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0.1.0</product>
+<product>cpe:/a:ibm:urbancode_deploy:6.0</product>
+</vuln-software-list>
+<vuln-descript>IBM UrbanCode Deploy（UCD）是美国IBM公司的一套应用自动化部署工具。该工具基于一个完善的应用部署自动化管理信息模型，提供可视化的部署逻辑设计手段，并通过远程代理技术，实现对复杂应用在不同环境下的自动化部署。
+IBM UCD中存在跨站脚本漏洞。远程攻击者可借助特制的URL利用该漏洞注入任意Web脚本或HTML。以下版本受到影响：IBM UCD 6.0.1.12之前的6.0版本，6.1.3.2之前的6.1版本及6.2.0.2之前的6.2版本。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-7415</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21970811</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21970811</vuln-solution>
+</entry>
+<entry>
+<name>IBM MQ M2000 Appliance GSKit 安全漏洞</name>
+<vuln-id>CNNVD-201601-002</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-05</modified>
+<source></source>
+<severity>中危</severity>
+<vuln-type>信息泄露</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:mq_appliance_m2000:8.0.0.3"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:mq_appliance_m2000:8.0.0.3</product>
+</vuln-software-list>
+<vuln-descript>IBM MQ M2000 Appliance是美国IBM公司的一款用于快速部署企业级消息中间件的一体机设备。GSKit是其中的一套安全管理工具。
+IBM MQ M2000 Appliance 8.0.0.4之前的版本中的GSKit存在安全漏洞。远程攻击者可利用该漏洞获取敏感信息。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-7421</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21971500</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21971500</vuln-solution>
+</entry>
+<entry>
+<name>IBM Security QRadar SIEM 跨站脚本漏洞</name>
+<vuln-id>CNNVD-201601-003</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-05</modified>
+<source></source>
+<severity>低危</severity>
+<vuln-type>跨站脚本</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.5"/>
+<cncpe-lang name="cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.3"/>
+<cncpe-lang name="cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.4"/>
+<cncpe-lang name="cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.0"/>
+<cncpe-lang name="cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.2"/>
+<cncpe-lang name="cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.1"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.5</product>
+<product>cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.3</product>
+<product>cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.4</product>
+<product>cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.0</product>
+<product>cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.2</product>
+<product>cpe:/a:ibm:qradar_security_information_and_event_manager:7.2.1</product>
+</vuln-software-list>
+<vuln-descript>IBM Security QRadar SIEM是美国IBM公司的一套可对分散在整个网络中的数千个设备和应用中的日志源事件数据进行整合的解决方案。该方案可以原始形式存储每个活动，然后执行即时关联活动，以区分实际威胁和误报。
+IBM Security QRadar SIEM 7.2.6之前的7.2.x版本中存在跨站脚本漏洞。远程攻击者可借助特制的字段利用该漏洞注入任意Web脚本或HTML。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-7409</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21973175</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21973175</vuln-solution>
+</entry>
+<entry>
+<name>IBM Spectrum Scale 信息泄露漏洞</name>
+<vuln-id>CNNVD-201601-004</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-07</modified>
+<source></source>
+<severity>中危</severity>
+<vuln-type>信息泄露</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:spectrum_scale:4.1.1.1"/>
+<cncpe-lang name="cpe:/a:ibm:spectrum_scale:4.1.1.0"/>
+<cncpe-lang name="cpe:/a:ibm:spectrum_scale:4.1.1.2"/>
+<cncpe-lang name="cpe:/a:ibm:spectrum_scale:4.2.2.0"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:spectrum_scale:4.1.1.1</product>
+<product>cpe:/a:ibm:spectrum_scale:4.1.1.0</product>
+<product>cpe:/a:ibm:spectrum_scale:4.1.1.2</product>
+<product>cpe:/a:ibm:spectrum_scale:4.2.2.0</product>
+</vuln-software-list>
+<vuln-descript>IBM Spectrum Scale是美国IBM公司的一套基于IBM GPFS（专为PB级存储管理而优化的企业文件管理系统）的可扩展的数据及文件管理解决方案。该方案支持帮助客户减少存储成本，同时提高云、大数据和分析环境中的安全性和管理效率等。
+IBM Spectrum Scale 4.1.1至4.1.1.3版本和4.2.0.0版本中存在安全漏洞。远程攻击者可利用该漏洞发现object-storage admin密码。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-7456</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=ssg1S1005476</ref-url>
+</ref>
+<ref>
+<ref-source>AIXAPAR</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg1IV79381</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=ssg1S1005476</vuln-solution>
+</entry>
+<entry>
+<name>IBM Tealeaf Customer Experience 信息泄露漏洞</name>
+<vuln-id>CNNVD-201601-005</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-07</modified>
+<source></source>
+<severity>中危</severity>
+<vuln-type>信息泄露</vuln-type>
+<thrtype>远程</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:8.6"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:8.7"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:8.8"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.0a"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.1"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.1a"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.2"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.2a"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:tealeaf_customer_experience:8.6</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:8.7</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:8.8</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.0</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.0a</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.1</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.1a</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.2</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.2a</product>
+</vuln-software-list>
+<vuln-descript>IBM Tealeaf Customer Experience是美国IBM公司的一套基于SaaS（软件即服务）的网络和移动应用分析解决方案。该方案通过对数据的分析了解帮助客户提高整体用户体验，并支持采用先进的用户界面丰富可视化和进行数据探索等。
+IBM Tealeaf Customer Experience中的门户网站客户端存在安全漏洞。远程攻击者可通过指定内部图标名称利用该漏洞读取任意图表。以下版本受到影响：IBM Tealeaf Customer Experience 8.7.1.8814之前的版本，8.8.0.9026之前的8.8版本，9.0.0版本，9.0.0A版本，9.0.1.1083之前的9.0.1版本，9.0.1.5073之前的9.0.1A版本，9.0.2.1095之前的9.0.2版本，9.0.2.5144之前的9.0.2A版本。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-4989</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21968866</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21968866</vuln-solution>
+</entry>
+<entry>
+<name>IBM Tealeaf Customer Experience 安全漏洞</name>
+<vuln-id>CNNVD-201601-006</vuln-id>
+<published>2016-01-05</published>
+<modified>2016-01-05</modified>
+<source></source>
+<severity>低危</severity>
+<vuln-type>信息泄露</vuln-type>
+<thrtype>本地</thrtype>
+<vulnerable-configuration>
+<cncpe operator="OR" negate="false">
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:8.6"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:8.7"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:8.8"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.0"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.0a"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.1"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.1a"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.2"/>
+<cncpe-lang name="cpe:/a:ibm:tealeaf_customer_experience:9.0.2a"/>
+</cncpe>
+</vulnerable-configuration>
+<vuln-software-list>
+<product>cpe:/a:ibm:tealeaf_customer_experience:8.6</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:8.7</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:8.8</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.0</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.0a</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.1</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.1a</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.2</product>
+<product>cpe:/a:ibm:tealeaf_customer_experience:9.0.2a</product>
+</vuln-software-list>
+<vuln-descript>IBM Tealeaf Customer Experience是美国IBM公司的一套基于SaaS（软件即服务）的网络和移动应用分析解决方案。该方案通过对数据的分析了解帮助客户提高整体用户体验，并支持采用先进的用户界面丰富可视化和进行数据探索等。
+IBM Tealeaf Customer Experience中的门户网站客户端存在安全漏洞。本地攻击者可利用该漏洞发现用户证书。以下版本受到影响：IBM Tealeaf Customer Experience 8.7.1.8818之前的版本，8.8.0.9026之前的8.8版本，9.0.0版本，9.0.0A版本，9.0.1.1083之前的9.0.1版本，9.0.1.5073之前的9.0.1A版本，9.0.2.1095之前的9.0.2版本，9.0.2.5144之前的9.0.2A版本。
+</vuln-descript>
+<other-id>
+<cve-id>CVE-2015-4990</cve-id>
+<bugtraq-id>null</bugtraq-id>
+</other-id>
+<refs>
+<ref>
+<ref-source>www-01.ibm.com</ref-source>
+<ref-name></ref-name>
+<ref-url>http://www-01.ibm.com/support/docview.wss?uid=swg21969739</ref-url>
+</ref>
+</refs>
+<vuln-solution>目前厂商已经发布了升级补丁以修复此安全问题，补丁获取链接：
+http://www-01.ibm.com/support/docview.wss?uid=swg21969739</vuln-solution>
+</entry>
+</cnnvd>

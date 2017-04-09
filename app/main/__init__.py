@@ -21,3 +21,11 @@ The next import must be file tail, avoiding to repeatly import flask,etc.
 '''
 
 from . import views,errors,forms
+
+'''
+模板中可能会检查权限，把Permission类加入上下文管理器
+'''
+from ..models import Permission
+@main.app_context_processor
+def inject_permissions():
+    return dict(Permission = Permission)

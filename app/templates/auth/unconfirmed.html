@@ -1,0 +1,19 @@
+{% include 'head.html' %}
+
+{% block title %}LA漏洞库 - 确认您的电子邮件账户{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        Hello, {{ current_user.user_name }}!
+    </h1>
+    <h3>您还没有确认您的电子邮件账户.</h3>
+    <p>
+        在您访问网站前，请您先登录你的邮箱，点击确认邮件中的链接或在浏览器中打开它。
+    </p>
+    <p>
+        重新发送确认邮件?
+        <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
+    </p>
+</div>
+{% endblock %}
